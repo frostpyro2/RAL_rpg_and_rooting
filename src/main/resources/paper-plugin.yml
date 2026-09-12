@@ -1,0 +1,4 @@
+name: rpgAndLooting_RAL
+version: '${version}'
+main: org.example.contentplugin.rpg_and_looting.RpgAndLooting_RAL
+api-version: '1.21'
