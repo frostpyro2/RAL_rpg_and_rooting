@@ -23,7 +23,6 @@ public class Element {
         return this.name.equals(name);
     }
 
-    @Nullable
     public Element get(String name){
         for(Element target : register)
             if (target.hasName(name)) return target;
