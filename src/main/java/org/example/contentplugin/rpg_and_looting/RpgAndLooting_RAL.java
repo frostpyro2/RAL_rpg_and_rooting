@@ -2,12 +2,14 @@ package org.example.contentplugin.rpg_and_looting;
 
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.example.contentplugin.rpg_and_looting.damage.packet.DamageManage;
 import org.example.contentplugin.rpg_and_looting.skillTrigger.SkillTrigger;
 import org.example.contentplugin.rpg_and_looting.eventCaller.click.PlayerClickEventListener;
 import org.example.contentplugin.rpg_and_looting.eventCaller.dataGen.DataGeneratorListener;
 
 public final class RpgAndLooting_RAL extends JavaPlugin {
     private static RpgAndLooting_RAL plugin;
+    private DamageManage damage;
     @Override
     public void onEnable() {
         plugin = this;
@@ -15,6 +17,7 @@ public final class RpgAndLooting_RAL extends JavaPlugin {
         new DataGeneratorListener(this);
         new PlayerClickEventListener(this);
         new SkillTrigger(this);
+        this.damage = new DamageManage();
     }
 
     public static Plugin getPlugin(){
@@ -24,5 +27,9 @@ public final class RpgAndLooting_RAL extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+    }
+
+    public DamageManage getDamage(){
+        return damage;
     }
 }

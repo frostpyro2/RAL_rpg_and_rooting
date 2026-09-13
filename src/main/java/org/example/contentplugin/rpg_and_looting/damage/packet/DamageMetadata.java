@@ -5,13 +5,18 @@ import org.example.contentplugin.rpg_and_looting.element.Element;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DamageMetadata {
+public class DamageMetadata implements Cloneable{
     private DamagePacket startPacket;
     private List<DamagePacket> packets = new ArrayList<>();
 
     public DamageMetadata(DamagePacket packet){
         startPacket = packet;
         packets.add(packet);
+    }
+
+    public DamageMetadata add(DamagePacket packet){
+        packets.add(packet);
+        return this;
     }
 
     public DamageMetadata add(double value, List<DamageType> types){
@@ -35,4 +40,10 @@ public class DamageMetadata {
         return this;
     }
 
+    @Override
+    public DamageMetadata clone() throws CloneNotSupportedException{
+        DamageMetadata clone = new DamageMetadata(startPacket);
+        clone.packets.addAll(packets);
+        return clone;
+    }
 }
